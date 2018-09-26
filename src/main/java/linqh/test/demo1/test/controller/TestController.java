@@ -21,10 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("test")
@@ -223,6 +220,24 @@ public class TestController {
         public void setAge(int age) {
             this.age = age;
         }
+    }
+
+    @GetMapping("createLable")
+    public Object createLable() {
+        Label label = new Label();
+        label.setId(UUID.randomUUID().toString().replace("-",""));
+        label.setLabelName("test - " + new Date().toString());
+        labelMapper.insert(label);
+        return labelMapper.all();
+    }
+
+    @GetMapping("updateLable")
+    public Object updateLable() {
+        List<Label> list = labelMapper.all();
+        for(Label label:list){
+            labelMapper.updateAllColumnById(label);
+        }
+        return labelMapper.all();
     }
 
 }

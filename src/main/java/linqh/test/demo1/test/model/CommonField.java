@@ -1,20 +1,21 @@
 package linqh.test.demo1.test.model;
 
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.enums.FieldFill;
 
 import java.util.Date;
 
 public class CommonField {
-    @TableField("create_user")
+    @TableField(value = "create_user",fill = FieldFill.INSERT)
     private String createUser;
 
-    @TableField("create_time")
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
     private Date createTime;
 
-    @TableField("update_user")
+    @TableField(value = "update_user",fill = FieldFill.INSERT_UPDATE)
     private String updateUser;
 
-    @TableField("update_time")
+    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
     public String getCreateUser() {
