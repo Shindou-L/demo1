@@ -50,7 +50,7 @@ public class Demo1ApplicationTests {
                     // 全局配置
                     GlobalConfig gc = new GlobalConfig();
                     gc.setOutputDir(config.getDir());
-                    gc.setAuthor("lqh");
+                    gc.setAuthor(config.getAuthor());
                     gc.setFileOverride(true); //是否覆盖
                     gc.setActiveRecord(true);// 不需要ActiveRecord特性的请改为false
                     gc.setEnableCache(false);// XML 二级缓存
