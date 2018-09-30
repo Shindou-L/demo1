@@ -33,7 +33,7 @@ public class ${entity} {
 public class ${entity} implements Serializable {
 #end
 
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 #foreach($field in ${table.fields})
     #if(${field.keyFlag})
@@ -75,15 +75,15 @@ private static final long serialVersionUID = 1L;
         #end
 
     public ${field.propertyType} ${getprefix}${field.capitalName}() {
-    return ${field.propertyName};
+        return ${field.propertyName};
     }
 
         #if(${entityBuilderModel})
-        public ${entity} set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
+    public ${entity} set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
         #else
         public void set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
         #end
-    this.${field.propertyName} = ${field.propertyName};
+        this.${field.propertyName} = ${field.propertyName};
         #if(${entityBuilderModel})
         return this;
         #end
@@ -97,27 +97,4 @@ private static final long serialVersionUID = 1L;
 
     #end
 #end
-#if(${activeRecord})
-@Override
-protected Serializable pkVal() {
-    #if(${keyPropertyName})
-    return this.${keyPropertyName};
-    #else
-    return this.id;
-    #end
-}
-
-#end
-@Override
-public String toString() {
-return "${entity}{" +
-#foreach($field in ${table.fields})
-    #if($!{velocityCount}==1)
-    "${field.propertyName}=" + ${field.propertyName} +
-    #else
-    ", ${field.propertyName}=" + ${field.propertyName} +
-    #end
-#end
-"}";
-}
 }
