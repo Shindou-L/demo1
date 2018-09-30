@@ -73,7 +73,7 @@ public class MPCodeGenerator {
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.quantil.ms.api");
         pc.setModuleName("all");
-        pc.setController("controler");
+        pc.setController("controller");
         pc.setEntity("domain");
         pc.setMapper("mapper");
         pc.setService("serviceinterface");
